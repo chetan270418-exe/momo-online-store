@@ -1,0 +1,255 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: all 0.4s ease;
+  height: 70px;
+}
+
+.navbar.transparent {
+  background: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.navbar.transparent .nav-links a {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.navbar.transparent .icon-btn,
+.navbar.transparent .mobile-toggle {
+  color: white;
+}
+
+.navbar.solid {
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo-img {
+  height: 50px; /* Adjust size based on logo */
+  width: auto;
+  border-radius: 50%; /* If logo is circular */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-family: var(--font-heading);
+  color: var(--primary);
+}
+
+.navbar.transparent .logo-text {
+  color: white;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.nav-links a {
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  position: relative;
+  transition: var(--transition);
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--primary);
+  transition: var(--transition);
+}
+
+.navbar.transparent .nav-links a::after {
+  background: white;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  width: 100%;
+}
+
+.nav-links a.active {
+  color: var(--primary);
+}
+
+.navbar.transparent .nav-links a.active {
+  color: white;
+}
+
+.nav-icons-desktop {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.icon-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.35rem;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+}
+
+.icon-btn:hover {
+  color: var(--primary);
+  transform: scale(1.1);
+}
+
+.navbar.transparent .icon-btn:hover {
+  color: rgba(255,255,255,0.7);
+}
+
+.cart-btn {
+  position: relative;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: var(--primary);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: bold;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--bg-card);
+}
+
+.navbar.transparent .cart-badge {
+  border-color: transparent;
+}
+
+.user-dropdown {
+  position: relative;
+}
+
+.user-dropdown:hover .dropdown-menu {
+  display: flex;
+  animation: fadeIn 0.2s ease;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  flex-direction: column;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  min-width: 180px;
+  overflow: hidden;
+  padding: 0.5rem 0;
+}
+
+.navbar.transparent .dropdown-menu {
+  background: var(--bg-card); /* Keep solid when opened over video */
+  color: var(--text-primary);
+}
+
+.dropdown-header {
+  padding: 0.75rem 1.25rem;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 0.5rem;
+  font-family: var(--font-heading);
+}
+
+.dropdown-menu a, .dropdown-menu button {
+  padding: 0.75rem 1.25rem;
+  background: none;
+  border: none;
+  text-align: left;
+  font-size: 0.875rem;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.dropdown-menu a:hover, .dropdown-menu button:hover {
+  background: var(--bg-secondary);
+  color: var(--primary);
+  padding-left: 1.5rem;
+}
+
+.mobile-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+.nav-icons-mobile {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    position: fixed;
+    top: 70px;
+    left: -100%;
+    width: 100%;
+    height: calc(100vh - 70px);
+    background: var(--bg-card);
+    flex-direction: column;
+    justify-content: center;
+    transition: var(--transition);
+    z-index: 999;
+  }
+
+  .nav-links.active {
+    left: 0;
+  }
+
+  .nav-icons-desktop {
+    display: none;
+  }
+
+  .nav-icons-mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .mobile-toggle {
+    display: block;
+  }
+}

@@ -1,0 +1,32 @@
+.checkout-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+@media (min-width: 992px) {
+  .checkout-layout {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  .checkout-form-section { flex: 2; }
+  .checkout-summary-section { flex: 1; position: sticky; top: 100px; }
+}
+
+.p-4 {
+  padding: 2rem;
+}
+
+.checkout-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

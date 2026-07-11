@@ -1,0 +1,43 @@
+.order-history-page {
+  padding-top: 2rem;
+}
+
+.order-card {
+  background: var(--bg-card);
+  transition: var(--transition);
+}
+
+.order-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.text-sm {
+  font-size: 0.875rem;
+}
+
+.font-weight-500 {
+  font-weight: 500;
+}
+
+.order-status-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.text-success { color: var(--accent); }
+.text-danger { color: #DC2626; }
+.text-warning { color: var(--secondary); }
+
+.order-total-price {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+}
+
+.empty-orders {
+  opacity: 0.5;
+}
