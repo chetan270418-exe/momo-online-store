@@ -1,0 +1,162 @@
+/* ─── Food Slider Section ─── */
+.food-slider-section {
+  padding: 4rem 0 3rem;
+  background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  overflow: hidden;
+  width: 100%;
+}
+
+.slider-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  padding: 0 1rem;
+}
+
+.slider-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #8B4513, #D2691E);
+  color: white;
+  padding: 0.35rem 1.1rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.slider-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  color: var(--text-primary);
+  margin: 0.25rem 0 0.5rem;
+}
+
+.slider-sub {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+/* Wrapper */
+.slider-track-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Fade edges */
+.slider-fade {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100px;
+  z-index: 2;
+  pointer-events: none;
+}
+.slider-fade.left {
+  left: 0;
+  background: linear-gradient(to right, var(--bg-primary) 0%, transparent 100%);
+}
+.slider-fade.right {
+  right: 0;
+  background: linear-gradient(to left, var(--bg-primary) 0%, transparent 100%);
+}
+
+/* The scrolling track */
+.slider-track {
+  display: flex;
+  gap: 1.25rem;
+  width: max-content;
+  padding: 1rem 0 2rem;
+  animation: marquee-scroll 35s linear infinite;
+  will-change: transform;
+}
+
+.slider-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-33.3333%); }
+}
+
+/* Individual cards */
+.slider-card {
+  width: 210px;
+  flex-shrink: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--bg-card, #fff);
+  border: 1px solid var(--border, #e2e8f0);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+  user-select: none;
+}
+
+.slider-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  border-color: #8B4513;
+}
+
+/* Image */
+.slider-img-wrap {
+  position: relative;
+  height: 145px;
+  overflow: hidden;
+  background: #f1f5f9;
+}
+
+.slider-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+  display: block;
+}
+
+.slider-card:hover .slider-img-wrap img {
+  transform: scale(1.12);
+}
+
+.slider-price {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background: rgba(0, 0, 0, 0.72);
+  color: #FBBF24;
+  font-weight: 800;
+  font-size: 0.85rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 6px;
+  backdrop-filter: blur(4px);
+  letter-spacing: 0.5px;
+}
+
+/* Card info */
+.slider-info {
+  padding: 0.75rem 0.9rem 0.85rem;
+}
+
+.slider-name {
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: var(--text-primary);
+  margin: 0 0 0.35rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.slider-cat {
+  display: inline-block;
+  font-size: 0.72rem;
+  color: #8B4513;
+  font-weight: 600;
+  background: rgba(139, 69, 19, 0.1);
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+}

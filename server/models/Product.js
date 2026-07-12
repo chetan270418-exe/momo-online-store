@@ -78,6 +78,12 @@ const productSchema = new mongoose.Schema(
       type: Boolean,
       default: true,
     },
+    offer: {
+      isActive: { type: Boolean, default: false },
+      label: { type: String, default: '' },       // e.g. "20% OFF", "MEAL DEAL"
+      discount: { type: Number, default: 0 },    // percentage discount (0-100)
+      color: { type: String, default: '#EF4444' }, // hex color for badge
+    },
   },
   {
     timestamps: true,

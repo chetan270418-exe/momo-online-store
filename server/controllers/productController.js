@@ -61,6 +61,10 @@ export const getProductById = async (req, res, next) => {
 export const createProduct = async (req, res, next) => {
   try {
     const { name, description, price, category, stock } = req.body;
+    let offer = { isActive: false, label: '', discount: 0, color: '#EF4444' };
+    if (req.body.offer) {
+      try { offer = JSON.parse(req.body.offer); } catch (e) {}
+    }
 
     let image = '';
     let imagePublicId = '';
@@ -83,6 +87,7 @@ export const createProduct = async (req, res, next) => {
       stock,
       image,
       imagePublicId,
+      offer,
     });
 
     res.status(201).json({
@@ -110,6 +115,9 @@ export const updateProduct = async (req, res, next) => {
     product.stock = req.body.stock !== undefined ? req.body.stock : product.stock;
     if (req.body.isAvailable !== undefined) {
       product.isAvailable = req.body.isAvailable;
+    }
+    if (req.body.offer) {
+      try { product.offer = JSON.parse(req.body.offer); } catch (e) {}
     }
 
     if (req.file) {

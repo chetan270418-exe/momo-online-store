@@ -28,11 +28,10 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
     <header className={`navbar ${isHome && !scrolled ? 'transparent' : 'solid glass'}`}>
       <div className="container nav-container">
         <Link to="/" className="nav-logo">
-          <img src="/logo.png" alt="Momo Cafe Logo" className="logo-img" onError={(e) => {
+          <img src="/logo.jpg" alt="Momo Cafe Logo" className="logo-img" onError={(e) => {
             e.target.style.display = 'none';
-            e.target.nextSibling.style.display = 'block';
           }} />
-          <span className="logo-text" style={{display: 'none'}}>Momo Cafe</span>
+          <span className="logo-text">Momo Cafe</span>
         </Link>
 
         <nav className={`nav-links ${isOpen ? 'active' : ''}`}>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { FiShoppingCart, FiArrowRight } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
+import FoodSlider from '../../components/FoodSlider/FoodSlider';
 import './Home.css';
 
 const Home = () => {
@@ -63,7 +64,10 @@ const Home = () => {
           </div>
         </div>
       </section>
-      
+
+      {/* Food Slider — Specials Marquee */}
+      <FoodSlider />
+
       {/* CTA Banner */}
       <section className="cta-banner">
         <div className="container text-center">

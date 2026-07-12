@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import ProductCard from '../../components/ProductCard/ProductCard';
+import OffersSlider from '../../components/OffersSlider/OffersSlider';
 import { getProducts } from '../../services/api';
 import { FiSearch, FiFilter } from 'react-icons/fi';
 import './Menu.css';
@@ -70,6 +71,9 @@ const Menu = () => {
           <p>Discover our delicious varieties of handcrafted momos</p>
         </div>
       </div>
+
+      {/* Offers Sliding Panel */}
+      <OffersSlider />
 
       <div className="container section">
         <div className="menu-controls mb-4">

@@ -16,7 +16,8 @@ const ManageProducts = () => {
     description: '',
     category: 'Veg Momo',
     stock: 50,
-    isAvailable: true
+    isAvailable: true,
+    offer: { isActive: false, label: '', discount: 0, color: '#EF4444' }
   });
   const [imageFile, setImageFile] = useState(null);
 
@@ -44,12 +45,16 @@ const ManageProducts = () => {
         description: product.description,
         category: product.category,
         stock: product.stock,
-        isAvailable: product.isAvailable
+      setFormData({
+        name: product.name, price: product.price, description: product.description,
+        category: product.category, stock: product.stock, isAvailable: product.isAvailable,
+        offer: product.offer || { isActive: false, label: '', discount: 0, color: '#EF4444' }
       });
     } else {
       setEditingId(null);
       setFormData({
-        name: '', price: '', description: '', category: 'Veg Momo', stock: 50, isAvailable: true
+        name: '', price: '', description: '', category: 'Veg Momo', stock: 50, isAvailable: true,
+        offer: { isActive: false, label: '', discount: 0, color: '#EF4444' }
       });
     }
     setImageFile(null);
@@ -58,7 +63,12 @@ const ManageProducts = () => {
 
   const handleChange = (e) => {
     const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
-    setFormData({ ...formData, [e.target.name]: value });
+    if (e.target.name.startsWith('offer.')) {
+      const field = e.target.name.split('.')[1];
+      setFormData({ ...formData, offer: { ...formData.offer, [field]: value } });
+    } else {
+      setFormData({ ...formData, [e.target.name]: value });
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -70,6 +80,7 @@ const ManageProducts = () => {
     data.append('category', formData.category);
     data.append('stock', formData.stock);
     data.append('isAvailable', formData.isAvailable);
+    data.append('offer', JSON.stringify(formData.offer));
     if (imageFile) data.append('image', imageFile);
 
     try {
@@ -201,12 +212,36 @@ const ManageProducts = () => {
                 <small className="text-secondary mt-1 d-block">Leave empty to keep existing image</small>
               </div>
               
-              <div className="form-group" style={{display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
+              <div className="form-group" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                 <input type="checkbox" id="isAvailable" name="isAvailable" checked={formData.isAvailable} onChange={handleChange} />
-                <label htmlFor="isAvailable" style={{marginBottom: 0}}>Product is available for ordering</label>
+                <label htmlFor="isAvailable" style={{ margin: 0 }}>Available for Order</label>
               </div>
-              
-              <div className="mt-4" style={{display: 'flex', gap: '1rem', justifyContent: 'flex-end'}}>
+
+              {/* Offer Section */}
+              <div style={{ background: 'var(--bg-secondary)', padding: '1rem', borderRadius: '8px', marginTop: '1rem' }}>
+                <div className="form-group" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem' }}>
+                  <input type="checkbox" id="offerActive" name="offer.isActive" checked={formData.offer.isActive} onChange={handleChange} />
+                  <label htmlFor="offerActive" style={{ margin: 0, fontWeight: 'bold' }}>Enable Special Offer / Deal</label>
+                </div>
+                {formData.offer.isActive && (
+                  <div className="grid grid-3" style={{ gap: '1rem' }}>
+                    <div className="form-group">
+                      <label>Offer Label</label>
+                      <input type="text" className="input" name="offer.label" value={formData.offer.label} onChange={handleChange} placeholder="e.g. 20% OFF" required />
+                    </div>
+                    <div className="form-group">
+                      <label>Discount %</label>
+                      <input type="number" className="input" name="offer.discount" value={formData.offer.discount} onChange={handleChange} min="0" max="100" required />
+                    </div>
+                    <div className="form-group">
+                      <label>Badge Color</label>
+                      <input type="color" className="input" name="offer.color" value={formData.offer.color} onChange={handleChange} style={{ height: '40px', padding: '2px' }} />
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              <div style={{ display: 'flex', gap: '1rem', justifyContent: 'flex-end', marginTop: '1.5rem' }}>
                 <button type="button" className="btn btn-outline" onClick={() => setShowModal(false)}>Cancel</button>
                 <button type="submit" className="btn btn-primary">{editingId ? 'Update' : 'Create'}</button>
               </div>
