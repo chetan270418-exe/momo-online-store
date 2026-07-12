@@ -81,6 +81,8 @@ const Menu = () => {
             <FiSearch className="search-icon" />
             <input 
               type="text" 
+              id="search"
+              name="search"
               placeholder="Search momos..." 
               value={search}
               onChange={(e) => setSearch(e.target.value)}
