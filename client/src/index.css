@@ -74,7 +74,13 @@ a {
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 1rem;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 0 2rem;
+  }
 }
 
 .section {
@@ -203,3 +209,9 @@ a {
 .text-center { text-align: center; }
 .mt-4 { margin-top: 1.5rem; }
 .mb-4 { margin-bottom: 1.5rem; }
+
+@media (max-width: 640px) {
+  html { font-size: 14px; }
+  .section { padding: 3rem 0; }
+  .grid { gap: 1.25rem; }
+}
