@@ -40,27 +40,6 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
           <Link to="/about" className={location.pathname === '/about' ? 'active' : ''} onClick={() => setIsOpen(false)}>About</Link>
           <Link to="/contact" className={location.pathname === '/contact' ? 'active' : ''} onClick={() => setIsOpen(false)}>Contact</Link>
           
-          <div className="nav-icons-mobile">
-            <button className="icon-btn" onClick={toggleDarkMode}>
-              {darkMode ? <FiSun /> : <FiMoon />}
-            </button>
-            <Link to="/cart" className="icon-btn cart-btn" onClick={() => setIsOpen(false)}>
-              <FiShoppingCart />
-              {cartCount > 0 && <span className="cart-badge animate-bounce">{cartCount}</span>}
-            </Link>
-            {isAuthenticated ? (
-              <div className="user-dropdown">
-                <button className="icon-btn"><FiUser /> {user?.name.split(' ')[0]}</button>
-                <div className="dropdown-menu">
-                  <Link to="/orders">My Orders</Link>
-                  {user?.role === 'admin' && <Link to="/admin">Admin Panel</Link>}
-                  <button onClick={logout}>Logout</button>
-                </div>
-              </div>
-            ) : (
-              <Link to="/login" className="btn btn-primary btn-sm">Login</Link>
-            )}
-          </div>
         </nav>
 
         <div className="nav-icons-desktop">
@@ -75,20 +54,21 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
             <div className="user-dropdown">
               <button className="icon-btn"><FiUser /></button>
               <div className="dropdown-menu">
-                <div className="dropdown-header">Hi, {user?.name}</div>
+                <div className="dropdown-header">Hi, {user?.name.split(' ')[0]}</div>
                 <Link to="/orders">My Orders</Link>
                 {user?.role === 'admin' && <Link to="/admin">Admin Panel</Link>}
+                {user?.role === 'staff' && <Link to="/staff">Staff Panel</Link>}
                 <button onClick={logout}>Logout</button>
               </div>
             </div>
           ) : (
-            <Link to="/login" className="btn btn-primary btn-sm">Login</Link>
+            <Link to="/login" className="btn btn-primary btn-sm login-desktop">Login</Link>
           )}
-        </div>
 
-        <button className="mobile-toggle" onClick={toggleMenu}>
-          {isOpen ? <FiX /> : <FiMenu />}
-        </button>
+          <button className="mobile-toggle" onClick={toggleMenu}>
+            {isOpen ? <FiX /> : <FiMenu />}
+          </button>
+        </div>
       </div>
     </header>
   );

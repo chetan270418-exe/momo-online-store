@@ -221,35 +221,19 @@
 
 @media (max-width: 768px) {
   .nav-links {
-    position: fixed;
-    top: 70px;
-    left: -100%;
-    width: 100%;
-    height: calc(100vh - 70px);
-    background: var(--bg-card);
-    flex-direction: column;
-    justify-content: center;
-    transition: var(--transition);
-    z-index: 999;
-  }
-
-  .nav-links.active {
-    left: 0;
-  }
-
-  .nav-icons-desktop {
     display: none;
   }
 
-  .nav-icons-mobile {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
-    margin-top: 2rem;
+  /* Keep the dark mode toggle visible, hide everything else */
+  .cart-btn,
+  .user-dropdown,
+  .login-desktop,
+  .mobile-toggle {
+    display: none !important;
   }
 
-  .mobile-toggle {
-    display: block;
+  .nav-icons-desktop {
+    display: flex;
+    align-items: center;
   }
 }

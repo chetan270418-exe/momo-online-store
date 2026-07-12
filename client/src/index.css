@@ -215,3 +215,9 @@ a {
   .section { padding: 3rem 0; }
   .grid { gap: 1.25rem; }
 }
+
+@media (max-width: 768px) {
+  body {
+    padding-bottom: calc(65px + env(safe-area-inset-bottom));
+  }
+}

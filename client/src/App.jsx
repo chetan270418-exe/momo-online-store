@@ -5,6 +5,7 @@ import { CartProvider } from './context/CartContext';
 import { Toaster } from 'react-hot-toast';
 
 import Navbar from './components/Navbar/Navbar';
+import BottomNav from './components/BottomNav/BottomNav';
 import Footer from './components/Footer/Footer';
 import Home from './pages/Home/Home';
 import Menu from './pages/Menu/Menu';
@@ -75,6 +76,7 @@ const App = () => {
             </Routes>
           </main>
           <Footer />
+          <BottomNav />
         </div>
         <Toaster position="top-right" />
       </CartProvider>
