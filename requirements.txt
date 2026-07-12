@@ -1,0 +1,24 @@
+# Note: This is a Node.js project. Dependencies are managed via package.json.
+# Run `npm install` in both the /server and /client directories to install them.
+
+# Backend (Node.js/Express) Requirements:
+express==4.18.2
+mongoose==7.6.3
+dotenv==16.3.1
+cors==2.8.5
+bcryptjs==2.4.3
+jsonwebtoken==9.0.2
+cloudinary==1.41.0
+multer==1.4.5-lts.1
+helmet==8.0.0
+express-rate-limit==7.4.1
+express-mongo-sanitize==2.2.0
+
+# Frontend (React/Vite) Requirements:
+react==18.2.0
+react-dom==18.2.0
+react-router-dom==6.17.0
+axios==1.6.0
+react-hot-toast==2.4.1
+react-icons==4.11.0
+recharts==2.9.0

@@ -40,12 +40,6 @@ const ManageProducts = () => {
     if (product) {
       setEditingId(product._id);
       setFormData({
-        name: product.name,
-        price: product.price,
-        description: product.description,
-        category: product.category,
-        stock: product.stock,
-      setFormData({
         name: product.name, price: product.price, description: product.description,
         category: product.category, stock: product.stock, isAvailable: product.isAvailable,
         offer: product.offer || { isActive: false, label: '', discount: 0, color: '#EF4444' }
